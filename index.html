@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title></title>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script>
+        var app = document.getElementById("app");
+        var config = {
+            apiKey: "AIzaSyDdIGTl198sqjqzTVSud1gYEwvH_tpWXbg",
+            authDomain: "teachingbot-b50d1.firebaseapp.com",
+            databaseURL: "https://teachingbot-b50d1.firebaseio.com",
+            storageBucket: "teachingbot-b50d1.appspot.com"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+        var starCountRef = firebase.database().ref().child('data');
+        starCountRef.on('value', function(snapshot) {
+            var ol = document.createElement("ol");
+            snapshot.forEach(function(item) {
+                var li = document.createElement("li");
+                li.id = item.key;
+                li.innerHTML = item.val().text;
+                ol.append(li);
+            });
+            document.getElementById("app").append(ol);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
