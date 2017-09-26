@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <ol>
+        {% for x in data %}
+        <li>{{x.text}}</li>
+        {% if 'hashtags' in x %}
+        <ol>
+            {%for h in x.hashtags%}
+            <li>{{h.text}}</li>
+            {%endfor%}
+        </ol>
+        {%endif%} {% endfor %}
+    </ol>
+</body>
+
+</html>

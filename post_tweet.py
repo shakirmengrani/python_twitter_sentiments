@@ -14,9 +14,10 @@ api = tweepy.API(auth)
 db = firebase.database()
 auth = firebase.auth()
 user = auth.sign_in_with_email_and_password("shakir.mengrani@gmail.com", "Shakir@786")
-for status in tweepy.Cursor(api.user_timeline, id="bbcworld").items(1000):
+for status in tweepy.Cursor(api.user_timeline, id="bbcworld").items(1):
+    print(status)
     tweet = {}
     tweet["text"] = status.text
     if status.entities.get("hashtags") != None and not len(status.entities.get("hashtags")) < 1:
         tweet["hashtags"] = [x["text"] for x in status.entities.get("hashtags")]
-    db.child("data").push(tweet,user['idToken'])
+    # db.child("data").push(tweet,user['idToken'])
