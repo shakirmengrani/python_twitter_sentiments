@@ -2,3 +2,5 @@ nltk
 tweepy
 pyrebase
 flask
+matplotlib
+pandas
