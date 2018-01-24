@@ -1,5 +1,5 @@
 import tweepy
-(consumer_key, consumer_secret,access_token, access_token_secret) = ("QlPFb8JZa0necEyeW6LxtQbdi","cfRifjTTGVL2aTZLcQV2WBjwBETm9r4W4vgaL3Dawar9Hx4aUS","231684476-R7CjopUfvvvCGvj4woGYabIBGa0a5XFZnzQhyhTp","GW6TpmVIqGijvlP9EX8FNy5jaijlKTpOn3VCxJEXPWyRr")
+(consumer_key, consumer_secret,access_token, access_token_secret) = ("XBNDfgtLtZWP8We3iY2zX8M8D","	faGgaP83nYVrV7YUr6MXgndvQzZWJmvtCBQFKfnDAFgsXVcsNi","377205991-w9F2zr1MFC6pbIQfes7T1a1aIJPxkf8vGnbzd6KB","CT74MtgggLx4hD6ois6QSHxtMJlmXODSleytqisFZrt9S")
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
