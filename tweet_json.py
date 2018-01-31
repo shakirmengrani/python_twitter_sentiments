@@ -37,4 +37,27 @@ def trends(id):
             data.append({'woeid': x['woeid'], 'name': x['name'], 'country': x['country'], 'countryCode': x['countryCode']})
         return json.dumps(data)
 
+
+
+@app.route('/oauth_callback', methods=['GET'])
+def on_callback():
+    from instagram import client, subscriptions
+    CONFIG = {
+        'client_id': '8d77064b80cf44dbadf1f818aeb9f2a2',
+        'client_secret': '953a02cc407a4845ac96ae2768ef1073',
+        'redirect_uri': 'http://localhost:8000/oauth_callback'
+    }
+    unauthenticated_api = client.InstagramAPI(**CONFIG)
+    code = request.GET.get("code")
+    if not code:
+        return 'Missing code'
+    try:
+        access_token, user_info = unauthenticated_api.exchange_code_for_access_token(code)
+        if not access_token:
+            return 'Could not get access token'
+        # api = client.InstagramAPI(access_token=access_token, client_secret=CONFIG['client_secret'])
+        return access_token
+    except Exception as e:
+        return e
+
 app.run(host="127.0.0.1", port=3000)
